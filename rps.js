@@ -27,12 +27,7 @@ function getHumanChoice() {
 }
 
 function playRound(humanChoice, computerChoice){
-
-    let computerChoice = getComputerChoice();
-    let humanScore = 0;
-    let computerScore = 0;
-    let humanChoice = getHumanChoice();
-
+    console.log("Round number: " + roundNumber);
     console.log(humanChoice);
     console.log(computerChoice);
     
@@ -53,9 +48,30 @@ function playRound(humanChoice, computerChoice){
         console.log("Computer wins! " + computerChoice + " beats " + humanChoice);
         ++computerScore;
     }
-
+    console.log("Your score: " + humanScore);
+    console.log("Computer's Score: " + computerScore);
+    console.log("<<<<<<=======================================================>>>>>>")
+    roundNumber++;
+};
+let humanScore = 0;
+let computerScore = 0;
+let roundNumber = 1;
+function playGame() {
+    while (roundNumber < 6){
+        playRound(getHumanChoice(), getComputerChoice());
+    };
+    if (humanScore > computerScore) {
+        console.log("You Win!!!");
+    } else if (humanScore === computerScore) {
+        console.log("Tie!!! Try again!");
+    } else { 
+            console.log("You Lose!!! Better luck next time!");
+    };
+    console.log("Final Score: ");
+    console.log("You: " + humanScore);
+    console.log("Computer: " + computerScore);
 };
 
-playRound(humanChoice, computerChoice);
-console.log("Your score: " + humanScore);
-console.log("Computer's Score: " + computerScore);
+playGame();
+
+
