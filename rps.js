@@ -17,11 +17,11 @@ let computerChoice = getComputerChoice();
 
 function getHumanChoice() {
     let humanChoice2 = prompt("(R)ock, (P)aper, (S)cissors? (R,P,S)?");
-    if (humanChoice2.toLowerCase() === "r" ) {
+    if (humanChoice2.toLowerCase() === "r" || humanChoice2.toLowerCase() === "rock") {
         return "rock";
-    } else if (humanChoice2.toLowerCase() === "p") {
+    } else if (humanChoice2.toLowerCase() === "p" || humanChoice2.toLowerCase() === "paper") {
         return "paper";
-    } else if (humanChoice2.toLowerCase() === "s") { 
+    } else if (humanChoice2.toLowerCase() === "s" || humanChoice2.toLowerCase() === "scissors") { 
         return "scissors";
     } else {
         return "invalid entry, please try again";
