@@ -1,3 +1,5 @@
+console.log("Welcome to Rock, Paper, Scissors!");
+
 function getComputerChoice() {
    outcome = Math.floor(Math.random() * 3);
    if (outcome === 0) {
@@ -10,10 +12,6 @@ function getComputerChoice() {
     return "scissors"
    }
 }
-
-console.log("Welcome to Rock, Paper, Scissors!");
-let computerChoice = getComputerChoice();
-//console.log("Computer has made its choice, make yours now!");
 
 function getHumanChoice() {
     let humanChoice2 = prompt("(R)ock, (P)aper, (S)cissors? (R,P,S)?");
@@ -28,16 +26,15 @@ function getHumanChoice() {
     }
 }
 
-// console.log("You chose " + getHumanChoice());
-
-let humanScore = 0;
-let computerScore = 0;
-let humanChoice = getHumanChoice();
-//console.log(humanScore);
-//console.log(computerScore);
-console.log(humanChoice);
-console.log(computerChoice);
 function playRound(humanChoice, computerChoice){
+
+    let computerChoice = getComputerChoice();
+    let humanScore = 0;
+    let computerScore = 0;
+    let humanChoice = getHumanChoice();
+
+    console.log(humanChoice);
+    console.log(computerChoice);
     
     if (humanChoice === computerChoice) {
         console.log("Draw!");
