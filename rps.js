@@ -10,9 +10,9 @@ function getComputerChoice() {
    }
    else if (outcome === 2) {
     return "scissors"
-   }
-}
-
+   };
+};
+/*
 function getHumanChoice() {
     let humanChoice2 = prompt("(R)ock, (P)aper, (S)cissors? (R,P,S)?");
     if (humanChoice2.toLowerCase() === "r" || humanChoice2.toLowerCase() === "rock") {
@@ -25,6 +25,16 @@ function getHumanChoice() {
         return "invalid entry, please try again";
     }
 }
+*/ 
+//Below only works after the page has loaded, i.e. requires "defer" added to script tag in <HEAD>
+let playerSelection = document.querySelectorAll("button");
+
+playerSelection.forEach((item) => {
+    item.addEventListener('click', () => {
+        console.log(item.id);
+    });
+});
+
 
 function playRound(humanChoice, computerChoice){
     console.log("Round number: " + roundNumber);
@@ -72,6 +82,7 @@ function playGame() {
     console.log("Computer: " + computerScore);
 };
 
-playGame();
+// playGame();
+
 
 
