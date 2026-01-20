@@ -107,7 +107,9 @@ let playerChoice = playerSelection.forEach((item) => {
 
 function gameOverCheck() {
     if (roundNumber === 6) {
-       resultContainer.removeChild(roundResultElement);
+        myButtons = document.getElementById("myButtons");
+        document.body.removeChild(myButtons);
+        resultContainer.removeChild(roundResultElement);
         humanScoreElement.textContent = "GAME OVER!"
         humanScoreElement.style.textAlign = "center";
         computerScoreElement.textContent = "FINAL SCORE: " + humanScore + " VS " + computerScore;
