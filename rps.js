@@ -35,7 +35,6 @@ function playRound(humanChoice, computerChoice){
     console.log("Round number: " + (roundNumber));
     console.log(humanChoice);
     console.log(computerChoice);
-    
     if (humanChoice === computerChoice) {
         return "Draw, no points awarded";        
     } else if (humanChoice === "Rock" && computerChoice === "Scissors") {
@@ -53,8 +52,8 @@ function playRound(humanChoice, computerChoice){
         ++computerScore;
         return "Computer wins! " + computerChoice + " beats " + humanChoice;        
     } 
+   ;
 };
-
 
 /* function playGame() {
     while (roundNumber < 6){
@@ -90,26 +89,32 @@ let playerSelection = document.querySelectorAll("button");
 
 let playerChoice = playerSelection.forEach((item) => {
     item.addEventListener('click', () => {
-        if (roundNumber <= 5) {
+        
         let roundResult = playRound(item.id, getComputerChoice());
         humanScoreElement.textContent = "Your Score: " + humanScore;
         computerScoreElement.textContent = "Computer Score: " + computerScore;
         currentRoundElement.textContent = "Rounds played: " + (roundNumber) + "/5";
         roundResultElement.textContent = roundResult;
-
-        resultContainer.appendChild(roundResultElement)
+        
+        resultContainer.appendChild(roundResultElement);
         resultContainer.appendChild(humanScoreElement);
         resultContainer.appendChild(computerScoreElement);
         resultContainer.appendChild(currentRoundElement); 
-        roundNumber++;    
-        } else {
-            console.log("Game Over!")
-        };
+        roundNumber++; 
+        gameOverCheck();   
     });
 });
 
-
-
-
-
-
+function gameOverCheck() {
+    if (roundNumber === 6) {
+       resultContainer.removeChild(roundResultElement);
+        humanScoreElement.textContent = "GAME OVER!"
+        humanScoreElement.style.textAlign = "center";
+        computerScoreElement.textContent = "FINAL SCORE: " + humanScore + " VS " + computerScore;
+        if (humanScore > computerScore){
+            currentRoundElement.textContent = "Congratulations, YOU WON!!!";
+        } else {
+            currentRoundElement.textContent = "Try Again!";
+        };      
+};
+};
