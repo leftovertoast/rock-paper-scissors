@@ -26,14 +26,9 @@ function getHumanChoice() {
     }
 }
 */ 
-//Below only works after the page has loaded, i.e. requires "defer" added to script tag in <HEAD>
-let playerSelection = document.querySelectorAll("button");
-
-playerSelection.forEach((item) => {
-    item.addEventListener('click', () => {
-        console.log(item.id);
-    });
-});
+let humanScore = 0;
+let computerScore = 0;
+let roundNumber = 1;
 
 
 function playRound(humanChoice, computerChoice){
@@ -63,9 +58,7 @@ function playRound(humanChoice, computerChoice){
     console.log("<<<<<<=======================================================>>>>>>")
     roundNumber++;
 };
-let humanScore = 0;
-let computerScore = 0;
-let roundNumber = 1;
+
 function playGame() {
     while (roundNumber < 6){
         playRound(getHumanChoice(), getComputerChoice());
@@ -81,8 +74,29 @@ function playGame() {
     console.log("You: " + humanScore);
     console.log("Computer: " + computerScore);
 };
+        let resultContainer = document.getElementById("results");
 
+        let humanScoreElement = document.createElement("p");
+        let computerScoreElement = document.createElement("p");
+        let currentRoundElement = document.createElement("p");
+        
+        
 // playGame();
+//Below only works after the page has loaded, i.e. requires "defer" added to script tag in <HEAD>
+let playerSelection = document.querySelectorAll("button");
+
+let playerChoice = playerSelection.forEach((item) => {
+    item.addEventListener('click', () => {
+        playRound(item.id, getComputerChoice());
+        humanScoreElement.textContent = "Your Score: " + humanScore;
+        computerScoreElement.textContent = "Computer Score: " + computerScore;
+        currentRoundElement.textContent = "Current Round: " + roundNumber;
+
+        resultContainer.appendChild(humanScoreElement);
+        resultContainer.appendChild(computerScoreElement);
+        resultContainer.appendChild(currentRoundElement);     
+    });
+});
 
 
 
