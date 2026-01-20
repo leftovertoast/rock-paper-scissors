@@ -21,3 +21,11 @@ body {
     gap: 26px;
 }
 
+.resultsClass {
+    background-color: rgb(9, 53, 53);
+    color: white;
+    font-size: 12pt;
+    border: 4pt, dashed, rgb(124, 3, 3);
+    padding: 4em;
+}
+
