@@ -112,6 +112,8 @@ function gameOverCheck() {
         resultContainer.removeChild(roundResultElement);
         humanScoreElement.textContent = "GAME OVER!"
         humanScoreElement.style.textAlign = "center";
+        computerScoreElement.style.textAlign = "center";
+        currentRoundElement.style.textAlign = "center";
         computerScoreElement.textContent = "FINAL SCORE: " + humanScore + " VS " + computerScore;
         if (humanScore > computerScore){
             currentRoundElement.textContent = "Congratulations, YOU WON!!!";
