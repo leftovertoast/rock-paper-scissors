@@ -3,13 +3,13 @@ console.log("Welcome to Rock, Paper, Scissors!");
 function getComputerChoice() {
    outcome = Math.floor(Math.random() * 3);
    if (outcome === 0) {
-    return "rock";
+    return "Rock";
    }
    else if (outcome === 1) {
-    return "paper";
+    return "Paper";
    }
    else if (outcome === 2) {
-    return "scissors"
+    return "Scissors"
    };
 };
 /*
@@ -32,34 +32,31 @@ let roundNumber = 1;
 
 
 function playRound(humanChoice, computerChoice){
-    console.log("Round number: " + roundNumber);
+    console.log("Round number: " + (roundNumber));
     console.log(humanChoice);
     console.log(computerChoice);
     
     if (humanChoice === computerChoice) {
-        console.log("Draw!");
+        return "Draw, no points awarded";        
+    } else if (humanChoice === "Rock" && computerChoice === "Scissors") {
         ++humanScore;
-        ++computerScore;
-    } else if (humanChoice === "rock" && computerChoice === "scissors") {
-        console.log("You win! Rock beats Scissors!");
+        return  "You win! Rock beats Scissors!";
+        
+    } else if (humanChoice === "Paper" && computerChoice === "Rock") {
         ++humanScore;
-    } else if (humanChoice === "paper" && computerChoice === "rock") {
-        console.log("You win! Paper beats Rock!");
+        return "You win! Paper beats rock!";
+    } else if (humanChoice === "Scissors" && computerChoice === "Paper") {
         ++humanScore;
-    } else if (humanChoice === "scissors" && computerChoice === "paper") {
-        console.log("You win! Scissors beats Paper!");
-        ++humanScore;
+        return "You win! Scissors beats Paper!";
+        
     } else {
-        console.log("Computer wins! " + computerChoice + " beats " + humanChoice);
         ++computerScore;
-    }
-    console.log("Your score: " + humanScore);
-    console.log("Computer's Score: " + computerScore);
-    console.log("<<<<<<=======================================================>>>>>>")
-    roundNumber++;
+        return "Computer wins! " + computerChoice + " beats " + humanChoice;        
+    } 
 };
 
-function playGame() {
+
+/* function playGame() {
     while (roundNumber < 6){
         playRound(getHumanChoice(), getComputerChoice());
     };
@@ -74,29 +71,45 @@ function playGame() {
     console.log("You: " + humanScore);
     console.log("Computer: " + computerScore);
 };
-        let resultContainer = document.getElementById("results");
+*/ 
 
-        let humanScoreElement = document.createElement("p");
-        let computerScoreElement = document.createElement("p");
-        let currentRoundElement = document.createElement("p");
+
+let resultContainer = document.getElementById("results");
+
+let humanScoreElement = document.createElement("p");
+let computerScoreElement = document.createElement("p");
+let currentRoundElement = document.createElement("p");
+let roundResultElement = document.createElement("p");
+
         
         
 // playGame();
 //Below only works after the page has loaded, i.e. requires "defer" added to script tag in <HEAD>
+
 let playerSelection = document.querySelectorAll("button");
 
 let playerChoice = playerSelection.forEach((item) => {
     item.addEventListener('click', () => {
-        playRound(item.id, getComputerChoice());
+        if (roundNumber <= 5) {
+        let roundResult = playRound(item.id, getComputerChoice());
         humanScoreElement.textContent = "Your Score: " + humanScore;
         computerScoreElement.textContent = "Computer Score: " + computerScore;
-        currentRoundElement.textContent = "Current Round: " + roundNumber;
+        currentRoundElement.textContent = "Rounds played: " + (roundNumber) + "/5";
+        roundResultElement.textContent = roundResult;
 
+        resultContainer.appendChild(roundResultElement)
         resultContainer.appendChild(humanScoreElement);
         resultContainer.appendChild(computerScoreElement);
-        resultContainer.appendChild(currentRoundElement);     
+        resultContainer.appendChild(currentRoundElement); 
+        roundNumber++;    
+        } else {
+            console.log("Game Over!")
+        };
     });
 });
+
+
+
 
 
 
