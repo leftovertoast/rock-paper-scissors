@@ -95,6 +95,8 @@ let playerChoice = playerSelection.forEach((item) => {
         computerScoreElement.textContent = "Computer Score: " + computerScore;
         currentRoundElement.textContent = "Rounds played: " + (roundNumber) + "/5";
         roundResultElement.textContent = roundResult;
+
+        resultContainer.classList.add("resultsClass")
         
         resultContainer.appendChild(roundResultElement);
         resultContainer.appendChild(humanScoreElement);
